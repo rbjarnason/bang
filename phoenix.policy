@@ -1,0 +1,75 @@
+// a secure Jini ERI phoenix policy
+keystore "file://${user.home}/.keystore";
+
+grant codebase "file:install_dir/lib/jsk-platform.jar" {
+  permission java.security.AllPermission;
+};
+
+grant codebase "file:install_dir/lib/phoenix.jar" {
+  permission java.io.FilePermission "${user.home}${/}phoenix.config", "read";
+  // next two used in configuration file
+  permission java.util.PropertyPermission "user.home", "read";
+  permission javax.security.auth.AuthPermission "createLoginContext.phoenix";
+  permission javax.security.auth.AuthPermission "doAsPrivileged";
+  // next two needed by RegistrySunExporter
+  permission java.lang.RuntimePermission
+        "accessClassInPackage.sun.rmi.server";
+  permission java.lang.RuntimePermission
+        "accessClassInPackage.sun.rmi.transport";
+};
+
+grant principal "phoenix" codebase "file:install_dir/lib/phoenix.jar" {
+  permission javax.security.auth.AuthPermission "getSubject";
+  // next two needed by RegistrySunExporter
+  permission java.lang.RuntimePermission "accessDeclaredMembers";
+  permission java.lang.reflect.ReflectPermission "suppressAccessChecks";
+  permission java.io.FilePermission "log", "read,write";
+  permission java.io.FilePermission "log/-", "read,write,delete";
+  // needed to default group location to phoenix-group.jar
+  permission java.lang.RuntimePermission "getProtectionDomain";
+  // next two needed for default java program for groups
+  permission java.util.PropertyPermission "java.home", "read";
+  permission java.io.FilePermission "${java.home}${/}bin${/}java", "execute";
+  permission java.lang.RuntimePermission "shutdownHooks";
+  // used in configuration file
+  permission java.io.FilePermission "${user.home}${/}.keystore", "read";
+  // next two needed to export remote objects
+  permission java.lang.RuntimePermission "getClassLoader";
+  permission net.jini.export.ExportPermission "exportRemoteInterface.com.sun.jini.phoenix.Activator";
+  // next two for outgoing newInstance calls to groups
+  // connect to just local host (but not "localhost") would be sufficient
+  permission java.net.SocketPermission "*:1024-", "connect";
+  permission net.jini.security.AuthenticationPermission
+        "${{self}} peer ${{self}}", "connect";
+  // next two for incoming remote calls
+  permission java.net.SocketPermission "*:1024-", "accept";
+  permission net.jini.security.AuthenticationPermission
+        "${{self}}", "accept";
+};
+
+// grant administrator permission to do most things
+grant principal "admin" {
+  permission com.sun.jini.phoenix.SystemPermission "register*";
+  permission com.sun.jini.phoenix.SystemPermission "get*";
+  permission com.sun.jini.phoenix.SystemPermission "set*";
+  permission com.sun.jini.phoenix.SystemPermission "shutdown";
+  permission com.sun.jini.phoenix.ExecOptionPermission
+        "-Djava.security.auth.login.config=${user.home}${/}login";
+  permission com.sun.jini.phoenix.ExecOptionPermission
+        "-Djavax.net.ssl.trustStore=${user.home}${/}.keystore";
+  permission com.sun.jini.phoenix.ExecOptionPermission
+        "-Djava.security.policy=${user.home}${/}group.security.policy";
+};
+
+// typical service needs to be able to unregister and change its descriptor
+grant principal "service" {
+  permission com.sun.jini.phoenix.SystemPermission "unregister*";
+  permission com.sun.jini.phoenix.SystemPermission "*ActivationDesc";
+};
+
+// for callbacks from activation groups
+grant principal "phoenix" {
+  permission com.sun.jini.phoenix.SystemPermission "activeGroup";
+  permission com.sun.jini.phoenix.MonitorPermission "*";
+};
+

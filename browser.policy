@@ -1,0 +1,12 @@
+grant codebase "file:/files/jini2/lib/browser.jar" {
+    permission java.security.AllPermission;
+};
+
+grant codebase "file:/files/jini2/lib/jsk-platform.jar" {
+    permission java.security.AllPermission;
+};
+
+grant {
+    permission java.security.AllPermission;
+};
+

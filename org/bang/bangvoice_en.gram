@@ -1,0 +1,25 @@
+grammar bangvoice;
+
+public <left> = Turn left {left} | Move left {left} | Left {left};
+
+public <right> = Turn right {right} | Move right {right} | Right {right};
+
+public <begin> = Chat on {begin} | Begin chat {begin};
+
+public <emote> = Emote on {emote};
+
+public <stop> = Chat off {stop};
+
+public <lookright> = Look right {lookright};
+
+public <lookleft> = Look left {lookleft};
+
+public <forward> = Move forward {forward} | Forward {forward} | Walk {forward} | Go forward {forward};
+
+public <back> = Move back {back} | Back {back} | Backwards {back} | Go back {back};
+
+public <run> = Run {run} | Faster {run};
+
+public <halt> = Halt {halt} | Stop {halt};
+
+public <bye> = Good bye {bye} | So long {bye};

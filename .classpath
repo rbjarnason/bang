@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry excluding="net/|net/jini/|net/jini/core/|net/jini/core/entry/|net/jini/core/event/|net/jini/core/lease/|net/jini/core/lookup/|net/jini/core/transaction/|net/jini/core/transaction/server/|net/jini/discovery/|net/jini/entry/|net/jini/lookup/|net/jini/lookup/entry/|net/jini/space/|net/" kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/DeepMatrix/mudeck.jar"/>
+	<classpathentry kind="lib" path="D:/DeepMatrix/muchat.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/jini2_1/lib-dl/sdm-dl.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/jini2_1/lib-dl/browser-dl.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/jini2_1/lib-dl/fiddler-dl.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/jini2_1/lib-dl/group-dl.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/jini2_1/lib-dl/jsk-dl.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/jini2_1/lib-dl/mahalo-dl.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/jini2_1/lib-dl/mercury-dl.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/jini2_1/lib-dl/norm-dl.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/jini2_1/lib-dl/outrigger-dl.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/jini2_1/lib-dl/phoenix-dl.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/jini2_1/lib-dl/reggie-dl.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/jini2_1/lib-ext/jsk-policy.jar"/>
+	<classpathentry kind="lib" path="C:/Program Files/jini2_1/lib/jini-core.jar"/>
+	<classpathentry kind="lib" path="C:/bang/lib/vrml97.jar"/>
+	<classpathentry kind="lib" path="C:/bang/lib/javax-media-speech-stubs.jar"/>
+	<classpathentry kind="lib" path="C:/bang/lib/jmf-stubs.jar"/>
+	<classpathentry kind="output" path=""/>
+</classpath>
